@@ -9,9 +9,7 @@ import java.util.List;
 import java.util.Map;
 
 public class Aeropuerto {
-
     private String nombre;
-    private String apellido;
     private String direccion;
     private String codigo_internacional;
     private int capacidad_operativa;
@@ -20,9 +18,8 @@ public class Aeropuerto {
     private Map<TIPO_HANGAR, List<Avion>> hangares;
 
     //Constructor
-    public Aeropuerto(String nombre, String apellido, String direccion, String codigo_internacional, int capacidad_operativa) {
+    public Aeropuerto(String nombre, String direccion, String codigo_internacional, int capacidad_operativa) {
         this.nombre = nombre;
-        this.apellido = apellido;
         this.direccion = direccion;
         this.codigo_internacional = codigo_internacional;
         this.capacidad_operativa = capacidad_operativa;
@@ -44,9 +41,6 @@ public class Aeropuerto {
     // Getters y setters
     public String getNombre() { return nombre; }
     public void setNombre(String nombre) { this.nombre = nombre; }
-
-    public String getApellido() { return apellido; }
-    public void setApellido(String apellido) { this.apellido = apellido; }
 
     public String getDireccion() { return direccion; }
     public void setDireccion(String direccion) { this.direccion = direccion; }
@@ -104,7 +98,6 @@ public class Aeropuerto {
     public String toString() {
         return "Aeropuerto{" +
                 "nombre='" + nombre + '\'' +
-                ", apellido='" + apellido + '\'' +
                 ", direccion='" + direccion + '\'' +
                 ", codigo_internacional='" + codigo_internacional + '\'' +
                 ", capacidad_operativa=" + capacidad_operativa +

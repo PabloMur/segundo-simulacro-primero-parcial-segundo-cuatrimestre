@@ -1,5 +1,3 @@
-package Principal;
-
 import Entidadaes.*;
 import Entidadaes.InstanciasAvion.*;
 import Enums.TIPO_HANGAR;
@@ -10,6 +8,7 @@ import java.util.List;
 import java.util.Scanner;
 
 public class Main {
+
     public static void main(String[] args) {
 
         Scanner sc = new Scanner(System.in);
@@ -17,7 +16,6 @@ public class Main {
         // Crear aeropuerto
         Aeropuerto aeropuerto = new Aeropuerto(
                 "Astor Piazzolla",
-                "",
                 "Mar del Plata, Argentina",
                 "MDQ",
                 10 // Capacidad operativa
@@ -38,7 +36,7 @@ public class Main {
             System.out.print("Seleccione una opción: ");
 
             int opcion = sc.nextInt();
-            sc.nextLine(); // limpiar buffer
+            sc.nextLine();
 
             switch (opcion) {
                 case 1 -> {
