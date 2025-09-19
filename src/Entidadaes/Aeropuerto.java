@@ -1,7 +1,7 @@
 package Entidadaes;
 
 import Enums.TIPO_HANGAR;
-import Entidadaes.Avion;
+import Interfaces.IAvion;
 
 import java.util.ArrayList;
 import java.util.HashMap;
@@ -14,10 +14,10 @@ public class Aeropuerto {
     private String codigo_internacional;
     private int capacidad_operativa;
 
-    // Map de hangares
-    private Map<TIPO_HANGAR, List<Avion>> hangares;
+    // Map de hangares: cada hangar contiene una lista de aviones (por interfaz)
+    private Map<TIPO_HANGAR, List<IAvion>> hangares;
 
-    //Constructor
+    // Constructor completo
     public Aeropuerto(String nombre, String direccion, String codigo_internacional, int capacidad_operativa) {
         this.nombre = nombre;
         this.direccion = direccion;
@@ -31,6 +31,7 @@ public class Aeropuerto {
         }
     }
 
+    // Constructor vacío
     public Aeropuerto() {
         this.hangares = new HashMap<>();
         for (TIPO_HANGAR tipo : TIPO_HANGAR.values()) {
@@ -51,10 +52,10 @@ public class Aeropuerto {
     public String getCodigo_internacional() { return codigo_internacional; }
     public void setCodigo_internacional(String codigo_internacional) { this.codigo_internacional = codigo_internacional; }
 
-    public Map<TIPO_HANGAR, List<Avion>> getHangares() { return hangares; }
+    public Map<TIPO_HANGAR, List<IAvion>> getHangares() { return hangares; }
 
     // Agregar un avión a un hangar
-    public void agregarAvion(TIPO_HANGAR tipoHangar, Avion avion) {
+    public void agregarAvion(TIPO_HANGAR tipoHangar, IAvion avion) {
         int totalAviones = contarTotalAviones();
         if (totalAviones >= capacidad_operativa) {
             System.out.println("No se puede agregar el avión. Capacidad máxima del aeropuerto alcanzada: " + capacidad_operativa);
@@ -71,25 +72,25 @@ public class Aeropuerto {
 
     // Despegar todos los aviones de un hangar
     public void despegarAvionesDeHangar(TIPO_HANGAR tipoHangar) {
-        List<Avion> aviones = hangares.get(tipoHangar);
+        List<IAvion> aviones = hangares.get(tipoHangar);
         if (aviones == null || aviones.isEmpty()) {
             System.out.println("No hay aviones en el hangar " + tipoHangar);
             return;
         }
-        for (Avion avion : aviones) {
+        for (IAvion avion : aviones) {
             avion.despegar();
         }
     }
 
     // Listar aviones de un hangar
     public void listarAvionesDeHangar(TIPO_HANGAR tipoHangar) {
-        List<Avion> aviones = hangares.get(tipoHangar);
+        List<IAvion> aviones = hangares.get(tipoHangar);
         if (aviones == null || aviones.isEmpty()) {
             System.out.println("No hay aviones en el hangar " + tipoHangar);
             return;
         }
         System.out.println("Aviones en el hangar " + tipoHangar + ":");
-        for (Avion avion : aviones) {
+        for (IAvion avion : aviones) {
             System.out.println(avion);
         }
     }
